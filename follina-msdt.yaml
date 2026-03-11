@@ -20,8 +20,13 @@ detection:
         Commandline|contains:
             - 'PCWDiagnostics'
     selection3:
-        - 
-    condition: selection
+        Commandline|contains:
+            - 'ms-msdt:/id'
+            - 'ms-msdt:-id'
+    selection4:
+        Commandline|contains:
+            - 'invoke'
+    condition: selection1 and (selection4 or (selection2 and selection3))
 falsepositives:
     - Unknown
 level: critical
