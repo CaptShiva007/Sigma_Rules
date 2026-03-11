@@ -1,0 +1,28 @@
+title: Executable Download from suspicious domains
+id: fe5fe7ca-be32-421a-b85f-98e2fda1c27d
+status: experimental
+description: Detects download of executable from hosts found in the IOC Sheet
+references:
+    - https://tryhackme.com/room/tacticaldetection
+author: Siva G (C0NQU15T4D0R)
+date: 2026-03-05
+modified: 2026-03-05
+
+tags:
+    - attack.initial-access
+logsource:
+    category: proxy
+detection:
+    selection:
+        c-uri-extension:
+            - 'exe'
+        r-dns:
+            - 'bad3xe69connection.io'
+            - 'kind4bad.com'
+            - 'nic3connection.io'
+    condition: selection
+fields:
+    - c-uri
+falsepositives:
+    - Unknown
+level: medium

@@ -1,0 +1,27 @@
+title: Suspicious Follina-msdt - Office Exploit
+id: 37ea8345-5797-4b35-aa6b-743af53c3e8b
+status: experimental
+description: Monitors for suspicious arguments passed to msdt.exe.
+references:
+    - https://doublepulsar.com/follina-a-microsoft-office-code-execution-vulnerability-1a47fce5629e
+author: Siva G (C0NQU15T4D0R)
+date: 2026-03-06
+modified: 2026-03-06
+tags:
+    - attack.execution
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection1:
+        Image|endswith:
+            - 'msdt.exe'
+    selection2:
+        Commandline|contains:
+            - 'PCWDiagnostics'
+    selection3:
+        - 
+    condition: selection
+falsepositives:
+    - Unknown
+level: critical
